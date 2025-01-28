@@ -1,0 +1,36 @@
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+}
+
+.normal {
+    background-color: var(--ui-secondary);
+    border: 1px solid var(--icon-primary-color);
+    color: var(--text-black);
+}
+
+.bad {
+    color: var(--red);
+    background-color: var(--light-red);
+    border: 1px solid var(--icon-primary-color);
+}
+
+.good {
+    color: var(--green);
+    background-color: var(--light-green);
+    border: 1px solid var(--green);
+}
+
+
+.text {
+    color: var(--red);
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+}

@@ -1,0 +1,27 @@
+.calls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.date {
+    color: var(--text-black);
+    font-size: 15px;
+    line-height: 21.75px;
+}
+
+.dateBlock {
+    margin-top: 40px;
+    position: relative;
+}
+
+.number {
+    position: absolute;
+    right: -10px;
+    top: 1px;
+    color: var(--text-header);
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+}

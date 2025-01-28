@@ -1,0 +1,56 @@
+
+ .dates {
+    display: flex;
+    align-items: center;
+
+  }
+
+  .info {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0 21.5px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .arrowLeft {
+   transform: rotate(-90deg); 
+  }
+
+  .arrowRight {
+    transform: rotate(90deg);
+  }
+
+  .arrowLeft, .arrowRight {
+    
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    fill: var(--icon-primary-color);
+
+    &:hover {
+      fill: var(--accent);
+    }
+    &:disabled {
+        fill:var(--icon-primary-color);
+        
+    }
+  }
+
+  .calendar {
+    margin-right: 8px;
+    fill: var(--icon-primary-color);
+
+    &:hover {
+      fill: var(--accent);
+    }
+  }
+
+  .datesSelect {
+    svg {
+      display: none;
+    }
+  }

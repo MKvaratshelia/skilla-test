@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    line-height: 20.72px;
+    font-weight: 400;
+    color: #5E7793;
+    padding-bottom: 20px;
+  
+    div {
+      opacity: 0.87;
+    }
+} 
+
+.icon {
+  display: flex;
+  align-items: center;
+  fill: #ADBFDF;
+  transform: rotate(180deg);
+  margin-left: 8px;
+}
+
+.type {
+    flex-basis: 54px;
+  }
+
+.time {
+  display: flex;
+    flex-basis: 88px;
+  }
+.worker {
+    flex-basis: 129px;
+  }
+.call {
+    flex-basis: 325px;
+  }
+.source {
+    flex-basis: 214px;
+  }
+.grade {
+    flex-basis: 461px;
+  }
+.duration {
+  display: flex;
+  align-items: center;
+    flex-basis: 113px;
+  }

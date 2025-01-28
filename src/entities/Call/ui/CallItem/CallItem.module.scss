@@ -1,0 +1,62 @@
+.callItem {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 17px;
+    padding-bottom: 16px;
+    padding-right: 40px;
+   
+    border-top: 1px solid var(--card-border-color);
+    color: var(--text-black);
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 400;
+    cursor: pointer;
+    transition:  0.3s ease;
+
+    &:hover {
+        background-color: var(--card-hover);
+
+    }
+    
+}
+
+.type {
+    flex-basis: 54px;
+  }
+
+.time {
+    flex-basis: 88px;
+}
+
+.worker {
+    flex-basis: 129px;
+
+}
+
+.workerAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.call {
+    flex-basis: 325px;
+}
+
+.source {
+    flex-basis: 214px;
+}
+
+.grade {
+    display: flex;
+    align-items: flex-start;
+    flex-basis: 461px;
+}
+
+ .duration {
+    flex-basis: 110px;
+    display: flex;
+    justify-content: flex-end;
+}
