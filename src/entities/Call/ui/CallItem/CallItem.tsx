@@ -14,9 +14,10 @@ import { formatPhoneNumber } from "../../../../shared/lib/formatPhoneNumber/form
 
 interface ICallItem {
     data: Call;
+    id: number;
 }
 
-export const CallItem = ({ data }: ICallItem) => {
+export const CallItem = ({ data, id }: ICallItem) => {
     const { source, date, time, person_avatar, in_out, partner_data } = data;
     return (
         <div className={cls.callItem}>
@@ -41,10 +42,24 @@ export const CallItem = ({ data }: ICallItem) => {
                 <Text text={source} />
             </div>
             <div className={cls.grade}>
-                <Info
-                    text='Хорошо'
-                    theme={InfoTheme.NORMAL}
-                />
+                {id === 0 && (
+                    <Info
+                        text='Хорошо'
+                        theme={InfoTheme.NORMAL}
+                    />
+                )}
+                {id === 1 && (
+                    <Info
+                        text='Отлично'
+                        theme={InfoTheme.GOOD}
+                    />
+                )}
+                {id === 2 && (
+                    <Info
+                        text='Плохо'
+                        theme={InfoTheme.BAD}
+                    />
+                )}
             </div>
             <div className={cls.duration}>{formatTime(time)}</div>
         </div>

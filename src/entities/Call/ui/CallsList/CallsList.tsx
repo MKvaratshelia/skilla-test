@@ -28,11 +28,12 @@ export const CallsList = (props: CallsListProps) => {
                     />
                 </div>
             )}
-            {data.map((card) => {
+            {data.map((card, id) => {
                 return (
                     <CallItem
                         key={card.id}
                         data={card}
+                        id={id}
                     />
                 );
             })}

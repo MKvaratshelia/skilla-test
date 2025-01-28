@@ -48,8 +48,10 @@ export const Calendar = memo(() => {
     };
 
     const fetchData = () => {
+        if (dateStart instanceof Date && dateEnd instanceof Date) {
+            dispatch(fetchCallsWithDates(format(dateStart, "yyyy-LL-dd"), format(dateEnd, "yyyy-LL-dd")));
+        }
         setisOpen(false);
-        dispatch(fetchCallsWithDates(String(dateStart), String(dateEnd)));
     };
     return (
         <div className={cls.calendar}>
@@ -84,14 +86,12 @@ export const Calendar = memo(() => {
                 <DatePicker
                     placeholderText='Начальная дата'
                     dateFormat={"yyyy-LL-dd"}
-                    locale={"ru"}
                     selected={dateStart}
                     onChange={onChangeDateStart}
                 />
                 <DatePicker
                     placeholderText='Конечная дата'
                     dateFormat={"yyyy-LL-dd"}
-                    locale={"ru"}
                     selected={dateEnd}
                     onChange={onChangeDateEnd}
                 />
