@@ -7,6 +7,9 @@ import { memo, useState } from "react";
 import { format, subDays } from "date-fns";
 import { useAppDispatch } from "../../../shared/lib/hooks/useAppDispatch";
 import { fetchCallsWithDates } from "../../../entities/Call/model/services/fetchCalls";
+import DatePicker from "react-datepicker";
+import { classNames } from "../../../shared/lib/classNames/classNames";
+import "react-datepicker/dist/react-datepicker.css";
 
 const dates = [
     { value: String(format(subDays(new Date(), 3), "yyyy-LL-dd")), title: "3 дня" },
@@ -18,6 +21,10 @@ const today = format(new Date(), "yyyy-LL-dd");
 // Игрался с получением списка по датам
 
 export const Calendar = memo(() => {
+    const [dateStart, setDateStart] = useState<Date | null>(null);
+    const [dateEnd, setDateEnd] = useState<Date | null>(null);
+
+    const [isOpen, setisOpen] = useState(false);
     const [id, setId] = useState(0);
     const [title, setTitle] = useState<string>(dates[0].title);
     const dispatch = useAppDispatch();
@@ -28,8 +35,24 @@ export const Calendar = memo(() => {
         dispatch(fetchCallsWithDates(dates[id].value, today));
     };
 
+    const onChangeDateStart = (date: Date | null) => {
+        if (date instanceof Date) {
+            setDateStart(date);
+        }
+    };
+
+    const onChangeDateEnd = (date: Date | null) => {
+        if (date instanceof Date) {
+            setDateEnd(date);
+        }
+    };
+
+    const fetchData = () => {
+        setisOpen(false);
+        dispatch(fetchCallsWithDates(String(dateStart), String(dateEnd)));
+    };
     return (
-        <div className={cls.dates}>
+        <div className={cls.calendar}>
             <button
                 onClick={() => onChangeDate(0)}
                 disabled={id === 0}
@@ -37,9 +60,12 @@ export const Calendar = memo(() => {
             >
                 <Icon Svg={ArrowШсщт} />
             </button>
-            <div className={cls.info}>
+            <div
+                onClick={() => setisOpen(true)}
+                className={cls.info}
+            >
                 <Icon
-                    className={cls.calendar}
+                    className={cls.calendarIcon}
                     Svg={CalendarIcon}
                 />
                 <Text
@@ -54,6 +80,32 @@ export const Calendar = memo(() => {
             >
                 <Icon Svg={ArrowШсщт} />
             </button>
+            <div className={classNames(cls.dates, { [cls.open]: isOpen }, [])}>
+                <DatePicker
+                    placeholderText='Начальная дата'
+                    dateFormat={"yyyy-LL-dd"}
+                    locale={"ru"}
+                    selected={dateStart}
+                    onChange={onChangeDateStart}
+                />
+                <DatePicker
+                    placeholderText='Конечная дата'
+                    dateFormat={"yyyy-LL-dd"}
+                    locale={"ru"}
+                    selected={dateEnd}
+                    onChange={onChangeDateEnd}
+                />
+                <button
+                    disabled={!dateStart && !dateEnd}
+                    onClick={fetchData}
+                    className={cls.button}
+                >
+                    <Icon
+                        className={cls.datesIcon}
+                        Svg={CalendarIcon}
+                    />
+                </button>
+            </div>
         </div>
     );
 });

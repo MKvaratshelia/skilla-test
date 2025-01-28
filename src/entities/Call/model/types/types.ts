@@ -10,6 +10,7 @@ export interface Call {
     errors: string[];
     in_out: number | string;
     date_notime: string;
+    partner_data: {id: string, name: string, phone: string}
 }
 
 export interface IResponse {

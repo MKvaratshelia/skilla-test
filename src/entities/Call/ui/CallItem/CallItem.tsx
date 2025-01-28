@@ -10,13 +10,14 @@ import { Info } from "../../../../shared/ui/Info/Info";
 import { InfoTheme } from "../../../../shared/ui/Info/types";
 import { formatTime } from "../../../../shared/lib/formatTime/formatTime";
 import { Call } from "../../model/types/types";
+import { formatPhoneNumber } from "../../../../shared/lib/formatPhoneNumber/formatPhoneNumber";
 
 interface ICallItem {
     data: Call;
 }
 
 export const CallItem = ({ data }: ICallItem) => {
-    const { source, date, time, to_number, person_avatar, in_out } = data;
+    const { source, date, time, person_avatar, in_out, partner_data } = data;
     return (
         <div className={cls.callItem}>
             <div className={cls.type}>
@@ -34,7 +35,7 @@ export const CallItem = ({ data }: ICallItem) => {
                 </div>
             </div>
             <div className={cls.call}>
-                <Text text={to_number} />
+                <Text text={formatPhoneNumber(partner_data.phone)} />
             </div>
             <div className={cls.source}>
                 <Text text={source} />

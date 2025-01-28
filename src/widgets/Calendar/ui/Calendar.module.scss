@@ -1,7 +1,8 @@
 
- .dates {
+ .calendar {
     display: flex;
     align-items: center;
+    position: relative;
 
   }
 
@@ -40,7 +41,7 @@
     }
   }
 
-  .calendar {
+  .calendarIcon {
     margin-right: 8px;
     fill: var(--icon-primary-color);
 
@@ -52,5 +53,32 @@
   .datesSelect {
     svg {
       display: none;
+    }
+  }
+
+  .dates {
+    margin-top: 5px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    &.open {
+      display: flex;
+    }
+  }
+
+  .button {
+    margin-left: 29px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .datesIcon {
+    fill: var(--icon-primary-color);
+
+    &:hover {
+      fill: var(--accent)
     }
   }
