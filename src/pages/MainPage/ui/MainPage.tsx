@@ -1,18 +1,16 @@
-import { CallsList } from "../../../entities/Call/ui/CallsList/CallsList";
 import cls from "./MainPage.module.scss";
 import { MainPageHeader } from "./MainPageHeader/MainPageHeader";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Select } from "../../../shared/ui/Select/Select";
+import { Select } from "@/shared/ui/Select/Select";
 import { useSelector } from "react-redux";
-import { calls, isError, isLoading } from "../../../entities/Call/model/selectors/selectors";
-import { useAppDispatch } from "../../../shared/lib/hooks/useAppDispatch";
-import { fetchCalls } from "../../../entities/Call/model/services/fetchCalls";
-import { Text } from "../../../shared/ui/Text/Text";
-import { Icon } from "../../../shared/ui/Icon/Icon";
-import CloseIcon from "../../../shared//assets//icons/closeIcon.svg?react";
-import { fillterByType } from "../../../entities/Call/model/slice/CallSlice";
-
-import { Calendar } from "../../../widgets/Calendar/ui/Calendar";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
+import { fetchCalls } from "@/entities/Call/model/services/fetchCalls";
+import { Text } from "@/shared/ui/Text/Text";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import CloseIcon from "@/shared/assets//icons/closeIcon.svg?react";
+import { fillterByType } from "@/entities/Call/model/slice/CallSlice";
+import { Calendar } from "@/widgets/Calendar/ui/Calendar";
+import { CallsList, getCalls, getError, getIsLoading } from "@/entities/Call";
 
 const options = [
     { value: "2", title: "Все типы" },
@@ -24,9 +22,9 @@ const options = [
 
 export const MainPage = () => {
     const [selectedType, setSelectedType] = useState<string>("");
-    const data = useSelector(calls);
-    const loading = useSelector(isLoading);
-    const error = useSelector(isError);
+    const calls = useSelector(getCalls);
+    const loading = useSelector(getIsLoading);
+    const error = useSelector(getError);
     const [visibleReset, setVisibleReset] = useState<boolean>(false);
 
     const dispatch = useAppDispatch();
@@ -83,16 +81,16 @@ export const MainPage = () => {
             </div>
             <div className={cls.content}>
                 <MainPageHeader />
-                {Object.entries(data).length === 0 && <span>Список пуст</span>}
+                {Object.entries(calls).length === 0 && <span>Список пуст</span>}
                 {error && <span>{error}</span>}
                 {loading && <span>загрузка....</span>}
                 {!loading &&
-                    Object.entries(data).map(([key, el]) => {
+                    Object.entries(calls).map(([date, call]) => {
                         return (
                             <CallsList
-                                key={key}
-                                time={key}
-                                data={el}
+                                key={date}
+                                time={date}
+                                data={call}
                             />
                         );
                     })}

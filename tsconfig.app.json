@@ -20,7 +20,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    
+    // ...rest of the template
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
+  
   "include": ["src"]
 }

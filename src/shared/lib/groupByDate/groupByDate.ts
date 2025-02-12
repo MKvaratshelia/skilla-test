@@ -2,7 +2,7 @@
 
 
 export const groupByDate = (data: any[]) => {
-    return data.reduce((acc: { [x: string]: any[]; }, el: { date_notime: any; }) => {
+    return data.reduce((acc , el) => {
         const date = el.date_notime;
         if (!acc[date]) {
             acc[date] = [];
