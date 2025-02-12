@@ -24,6 +24,10 @@
         display: flex;
     }
 
+    .options {
+        list-style-type: none;
+    }
+    
     .option {
         color: var(--select-text-black);
         padding: 7px 12px;

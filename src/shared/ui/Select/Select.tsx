@@ -63,20 +63,20 @@ export function Select(props: SelectProps) {
             </div>
 
             <div className={classNames(cls.content, { [cls.open]: isOpen }, [cls[direction]])}>
-                <div className={cls.options}>
+                <ul className={cls.options}>
                     {options &&
                         options.map((i) => {
                             return (
-                                <p
+                                <li
                                     className={classNames(cls.option, { [cls.active]: i.title === selected }, [])}
                                     onClick={() => onChange(i.value)}
                                     key={i.title}
                                 >
                                     {i.title}
-                                </p>
+                                </li>
                             );
                         })}
-                </div>
+                </ul>
             </div>
         </div>
     );
